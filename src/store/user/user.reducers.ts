@@ -16,6 +16,4 @@ export const setUserReducer = (
   }
 };
 
-export const resetUserReducer = (state: I.UserState) => {
-  state = initialState;
-};
+export const resetUserReducer = () => initialState;
