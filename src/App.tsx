@@ -4,15 +4,15 @@ import { useUserStore } from "./store/user";
 
 function App() {
   const { data, isLoading, refetch } = useGetPosts();
-  const { setToken, userData } = useUserStore();
+  const { setUser, userData } = useUserStore();
 
   console.count("count");
 
   const refet = useCallback(() => refetch(), [refetch]);
 
   const handleSetToken = useCallback(() => {
-    setToken(String(Math.random()));
-  }, [setToken]);
+    setUser({ field: "name", value: String(Math.random()) });
+  }, [setUser]);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] text-cyan-200 items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -24,7 +24,7 @@ function App() {
         onClick={handleSetToken}
         className="bg-white text-zinc-700 p-3 rounded-md"
       >
-        Set Token - {userData.token}
+        Set Token - {userData.name}
       </button>
 
       {isLoading && "loading"}

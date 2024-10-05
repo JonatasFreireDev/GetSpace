@@ -3,7 +3,7 @@ import { RootState } from "..";
 import { UserState } from "./user.types";
 import * as R from "./user.reducers";
 
-const initialState: UserState = {
+export const initialState: UserState = {
   userId: "",
   email: "",
   name: "",
@@ -19,13 +19,12 @@ export const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     setUser: R.setUserReducer,
-    setAddress: R.setAddressReducer,
+    resetUser: R.resetUserReducer,
   },
 });
 
 //Actions
-export const { setUser, setAddress } = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 
 //Selectors
 export const userSelector = (state: RootState) => state.user;
-export const userAddressSelector = (state: RootState) => state.user.address;

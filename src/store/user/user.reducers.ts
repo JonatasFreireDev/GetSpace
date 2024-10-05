@@ -1,18 +1,21 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import * as I from "./user.types";
+import { initialState } from "./user.slice";
 
 export const setUserReducer = (
-  state: any,
+  state: I.UserState,
   action: PayloadAction<I.SetUserReducerAction>
 ) => {
   const { field, value } = action.payload;
-  state[field] = value;
+
+  if (field.startsWith("address.")) {
+    const addressField = field.split(".")[1] as keyof I.Address;
+    state.address[addressField] = value;
+  } else {
+    (state as any)[field] = value;
+  }
 };
 
-export const setAddressReducer = (
-  state: I.UserState,
-  action: PayloadAction<I.SetUserAddressReducerAction>
-) => {
-  const { field, value } = action.payload;
-  state.address[field] = value;
+export const resetUserReducer = (state: I.UserState) => {
+  state = initialState;
 };

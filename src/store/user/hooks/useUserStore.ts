@@ -1,19 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setToken as setTokenAction, userSelector } from "../user.slice";
+import { userSelector } from "../user.slice";
+import * as Slice from "../user.slice";
 import { useCallback } from "react";
+import { SetUserReducerAction } from "../user.types";
 
 export const useUserStore = () => {
   const dispatch = useDispatch();
 
-  const setToken = useCallback(
-    (token: string) => dispatch(setTokenAction(token)),
+  const userData = useSelector(userSelector);
+
+  const setUser = useCallback(
+    ({ field, value }: SetUserReducerAction) =>
+      dispatch(Slice.setUser({ field, value })),
     [dispatch]
   );
 
-  const userData = useSelector(userSelector);
+  const resetUser = useCallback(() => {
+    dispatch(Slice.resetUser());
+  }, [dispatch]);
 
   return {
     userData,
-    setToken,
+    resetUser,
+    setUser,
   };
 };

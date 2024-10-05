@@ -5,17 +5,12 @@ export interface UserState {
   address: Address;
 }
 
-interface Address {
+export interface Address {
   city: string;
   state: string;
 }
 
 export interface SetUserReducerAction {
-  field: Exclude<keyof UserState, "adress">;
-  value: string;
-}
-
-export interface SetUserAddressReducerAction {
-  field: keyof Address;
+  field: keyof UserState | `address.${keyof Address}`;
   value: string;
 }
