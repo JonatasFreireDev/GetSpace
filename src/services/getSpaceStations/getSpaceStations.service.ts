@@ -1,9 +1,9 @@
 import { SpacesDevsApi } from "../_instances";
 
-export const launchService = async () => {
+export const spaceStationsService = async () => {
   try {
     const response = await SpacesDevsApi.get(
-      "/2.3.0/launches/?format=json&limit=3"
+      "/2.3.0/space_stations/?format=json"
     );
 
     return response.data;
