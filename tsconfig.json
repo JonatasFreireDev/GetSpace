@@ -24,6 +24,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "config-overrides.js"],
+  "include": ["**/*.ts", "**/*.tsx", "config-overrides.js", "src/router/index.jsx"],
   "exclude": ["node_modules"]
 }

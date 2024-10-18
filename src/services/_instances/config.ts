@@ -1,4 +1,4 @@
-import { store } from "../../store";
+import { store } from "@/store/_config/store";
 import { JsonPlaceHolderApi } from "./jsonPlaceHolder/jsonPlaceHolder";
 import { SpacesDevsApi } from "./spacesDevs/spacesDevs";
 

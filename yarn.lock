@@ -9045,7 +9045,7 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-tailwindcss@^3.0.2:
+tailwindcss@^3.0.2, tailwindcss@^3.4.13:
   version "3.4.13"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.4.13.tgz#3d11e5510660f99df4f1bfb2d78434666cb8f831"
   integrity sha512-KqjHOJKogOUt5Bs752ykCeiwvi0fKVkr5oqsFNt/8px/tA8scFPIlkygsf6jXrfCqGHz7VflA6+yytWuM+XhFw==
@@ -9766,6 +9766,11 @@ which@^2.0.1:
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"
+
+windstitch@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/windstitch/-/windstitch-0.3.0.tgz#ebb97d13098fca51286feee5b3103c681ad8b61d"
+  integrity sha512-xn48NPYKCcj8QHfn2/sQGF/zWRuHfSweRkUnSQnL6Szoyp7L2D6b+XbjlQY8FW8BIzc2Rq3ltx0Z5KpfFLyJkw==
 
 word-wrap@^1.2.5, word-wrap@~1.2.3:
   version "1.2.5"

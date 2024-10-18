@@ -1,7 +1,7 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector } from "../user.slice";
 import * as Slice from "../user.slice";
-import { useCallback } from "react";
 import { SetUserReducerAction } from "../user.types";
 
 export const useUserStore = () => {

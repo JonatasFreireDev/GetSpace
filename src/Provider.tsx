@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider as ProviderRedux } from "react-redux";
-import { store } from "./store";
+import { store } from "./store/_config/store";
 
 export function Provider({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();
