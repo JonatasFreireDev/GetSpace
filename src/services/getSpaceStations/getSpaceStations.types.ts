@@ -3,7 +3,7 @@ interface Image {
   name: string;
   image_url: string;
   thumbnail_url: string;
-  credit: string | null;
+  credit: string | undefined;
   license: License;
   single_use: boolean;
   variants: any[];
@@ -13,7 +13,7 @@ interface License {
   id: number;
   name: string;
   priority: number;
-  link: string | null;
+  link: string | undefined;
 }
 
 interface Status {
@@ -49,7 +49,7 @@ interface Agency {
   founding_year: number;
   launchers: string;
   spacecraft: string;
-  parent: string | null;
+  parent: string | undefined;
   image: Image;
   logo: Image;
   social_logo: Image;
@@ -67,7 +67,7 @@ interface SpaceStation {
   image: Image;
   status: Status;
   founded: string;
-  deorbited: string | null;
+  deorbited: string | undefined;
   description: string;
   orbit: string;
   type: StationType;
@@ -79,6 +79,6 @@ interface SpaceStation {
 export interface SpaceStationsResponse {
   count: number;
   next: string;
-  previous: string | null;
+  previous: string | undefined;
   results: SpaceStation[];
 }

@@ -15,9 +15,9 @@ export const router = createBrowserRouter(
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
       <Route path="launches" element={<Home />} />
-      <Route path="events" element={<SpaceStations />} />
+      <Route path="events" element={<Home />} />
       <Route path="space-stations" element={<SpaceStations />} />
-      <Route path="astronauts" element={<SpaceStations />} />
+      <Route path="astronauts" element={<Home />} />
     </Route>
   )
 );

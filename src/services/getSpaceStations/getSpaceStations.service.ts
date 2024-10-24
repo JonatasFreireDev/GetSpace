@@ -10,8 +10,8 @@ export const spaceStationsService = async ({
   searchParams.append("format", "json");
   searchParams.append("limit", "9");
 
-  if (status !== undefined) searchParams.append("status", status.toString());
-  if (type !== undefined) searchParams.append("type", type.toString());
+  if (status) searchParams.append("status", status.toString());
+  if (type) searchParams.append("type", type.toString());
 
   try {
     const response = await SpacesDevsApi.get(
