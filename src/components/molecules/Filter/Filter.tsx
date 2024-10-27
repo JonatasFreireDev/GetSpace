@@ -1,7 +1,8 @@
 import { Select, Title } from "@/components/atoms";
 import { FilterProps } from "./Filter.types";
+import { memo } from "react";
 
-export const Filter = ({ definitions }: FilterProps) => {
+export const Filter = memo(({ definitions }: FilterProps) => {
   return (
     <>
       <Title text="Filter" />
@@ -23,4 +24,4 @@ export const Filter = ({ definitions }: FilterProps) => {
       ))}
     </>
   );
-};
+});

@@ -60,7 +60,7 @@ interface StationType {
   name: string;
 }
 
-interface SpaceStation {
+export interface SpaceStation {
   id: number;
   url: string;
   name: string;
