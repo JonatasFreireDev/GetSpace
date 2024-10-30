@@ -33,8 +33,8 @@ export const SpaceStationsFilter = ({ refetch }: SpaceStationsFilterProps) => {
           options: [
             { label: "Selecione o status", value: undefined },
             { label: "Ativa", value: 1 },
-            { label: "Desorbitada", value: 2 },
-            { label: "Descomissionada", value: 3 },
+            { label: "Desorbitada", value: 3 },
+            { label: "Descomissionada", value: 2 },
           ],
         },
       },
@@ -46,8 +46,8 @@ export const SpaceStationsFilter = ({ refetch }: SpaceStationsFilterProps) => {
           type: "select",
           options: [
             { label: "Selecione o tipo", value: undefined },
-            { label: "Comercial", value: 1 },
-            { label: "Governo", value: 2 },
+            { label: "Comercial", value: 2 },
+            { label: "Governo", value: 1 },
           ],
         },
       },
