@@ -4,7 +4,7 @@ import { spaceStationsFilterSelector } from "../spaceStationsFilter.slice";
 import * as Slice from "../spaceStationsFilter.slice";
 import * as Type from "../spaceStationsFilter.types";
 
-export const useSpaceStationsFilter = () => {
+export const useSpaceStationsFilterStore = () => {
   const dispatch = useAppDispatch();
 
   const spaceStationFilterData = useAppSelector(spaceStationsFilterSelector);

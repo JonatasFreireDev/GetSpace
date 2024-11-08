@@ -1,12 +1,11 @@
-import { useCallback, useEffect } from "react";
-import { SpaceStation } from "@/services/getSpaceStations/getSpaceStations.types";
-import { SpaceStationsCard } from "./components/SpaceStationsCard/SpaceStationsCard";
-import { useGetSpaceStations } from "@/services";
 import { useFilterResponse } from "@/hooks/useFilterResponse/useFilterResponse";
+import { useGetSpaceStations } from "@/services";
+import { SpaceStation } from "@/services/getSpaceStations/getSpaceStations.types";
+import { useCallback, useEffect } from "react";
+import { SpaceStationsCard } from "./components/SpaceStationsCard/SpaceStationsCard";
 import { useSpaceStationsFilter } from "./hooks/useSpaceStationsFilter/useSpaceStationsFilter";
-import { FilterLayout } from "@/components/templates/FilterLayout/FilterLayout";
 
-export const SpaceStations = () => {
+export const Teste = () => {
   const { data, refetch, isLoading } = useGetSpaceStations();
   const { definitions, spaceStationFilterData } = useSpaceStationsFilter();
 
@@ -38,11 +37,5 @@ export const SpaceStations = () => {
       ));
   };
 
-  return (
-    <FilterLayout props={{ definitions, title: "Space Stations" }}>
-      {render()}
-    </FilterLayout>
-  );
+  return render();
 };
-
-export default SpaceStations;
