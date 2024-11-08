@@ -17,6 +17,7 @@ export const SpaceStationsCard = ({ spaceStation }: SpaceStationsCardProps) => (
       <KeyValue text="Founded" value={spaceStation.founded} />
       <KeyValue text="Deorbited" value={spaceStation.deorbited} />
       <KeyValue text="Orbit" value={spaceStation.orbit} />
+      <p className="mt-5">Description: </p>
       <div>{spaceStation.description}</div>
     </div>
   </div>

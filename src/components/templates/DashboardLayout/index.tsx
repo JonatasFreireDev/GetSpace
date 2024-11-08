@@ -4,7 +4,7 @@ import backgroundImage from "@/assets/background.webp";
 import { Suspense } from "react";
 import { Menu } from "@/components/molecules";
 
-export const Layout = () => {
+export const DashboardLayout = () => {
   return (
     <div className="bg-background text-text-primary w-full h-full">
       <div
