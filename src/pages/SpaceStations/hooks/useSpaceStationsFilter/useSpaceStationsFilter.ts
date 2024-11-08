@@ -1,12 +1,10 @@
-import { useCallback, useEffect, useMemo } from "react";
 import { FilterDefinitions } from "@/components/molecules/Filter/Filter.types";
-import { useSpaceStationsFilter } from "@/store";
-import { SpaceStationsFilterProps } from "./SpaceStationsFilter.types";
-import { Filter } from "@/components/molecules";
+import { useSpaceStationsFilterStore } from "@/store";
+import { useCallback, useMemo } from "react";
 
-export const SpaceStationsFilter = ({ refetch }: SpaceStationsFilterProps) => {
+export const useSpaceStationsFilter = () => {
   const { setStatus, setType, spaceStationFilterData } =
-    useSpaceStationsFilter();
+    useSpaceStationsFilterStore();
 
   const onChangeStatus = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,9 +53,8 @@ export const SpaceStationsFilter = ({ refetch }: SpaceStationsFilterProps) => {
     [onChangeStatus, onChangeType]
   );
 
-  useEffect(() => {
-    refetch();
-  }, [spaceStationFilterData, refetch]);
-
-  return <Filter definitions={definitions} />;
+  return {
+    definitions,
+    spaceStationFilterData,
+  };
 };
