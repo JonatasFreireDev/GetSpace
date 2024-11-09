@@ -9,7 +9,7 @@ import { Layout } from "@/components/templates/Layout";
 import { DashboardLayout } from "@/components/templates/DashboardLayout";
 
 const Home = lazy(() => import("../pages/Home"));
-const SpaceStations = lazy(() => import("../pages/SpaceStations"));
+const SpaceStations = lazy(() => import("../pages/SpaceStations/SpaceStations.wrapper"));
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
