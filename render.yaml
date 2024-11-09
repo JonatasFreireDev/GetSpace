@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: get-space
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    plan: free
+    git:
+      branch: main
+      repo: https://github.com/JonatasFreireDev/GetSpace
+    docker:
+      dockerfilePath: Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
