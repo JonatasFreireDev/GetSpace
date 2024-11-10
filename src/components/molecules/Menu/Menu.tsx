@@ -1,5 +1,4 @@
 import { memo, useMemo } from "react";
-import * as S from "./Menu.styles";
 
 export const Menu = memo(
   () => {
@@ -26,24 +25,24 @@ export const Menu = memo(
           path: "/astronauts",
         },
       ],
-      []
+      [],
     );
 
     return (
-      <S.NavBar className="fixed w-full flex flex-row justify-center bg-background bg-opacity-45">
+      <div className="flex flex-col justify-center bg-background bg-opacity-60 sm:fixed sm:w-full sm:flex-row">
         {paths.map(({ label, path }) => (
           <a
             key={path}
             href={path}
-            className="flex flex-row px-5 py-4 mx-2 mb-2 relative border-0 border-b-2 border-transparent after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-500 hover:after:w-full hover:after:left-0"
+            className="relative mx-2 mb-2 flex flex-row border-0 border-b-2 border-transparent px-5 py-4 after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-500 after:content-[''] hover:after:left-0 hover:after:w-full"
           >
             {String(label).toUpperCase()}
           </a>
         ))}
-      </S.NavBar>
+      </div>
     );
   },
-  () => true
+  () => true,
 );
 
 Menu.displayName = "Menu";
