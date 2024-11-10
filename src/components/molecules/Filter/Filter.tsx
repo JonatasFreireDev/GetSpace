@@ -31,5 +31,5 @@ export const Filter = memo(
       </>
     );
   },
-  () => false
+  () => true
 );

@@ -10,14 +10,14 @@ export const useSpaceStationsFilter = () => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setStatus({ value: Number(e.target.value) });
     },
-    [setStatus]
+    [setStatus],
   );
 
   const onChangeType = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setType({ value: Number(e.target.value) });
     },
-    [setType]
+    [setType],
   );
 
   const definitions: FilterDefinitions[] = useMemo(
@@ -29,10 +29,10 @@ export const useSpaceStationsFilter = () => {
         field: {
           type: "select",
           options: [
-            { label: "Selecione o status", value: undefined },
-            { label: "Ativa", value: 1 },
-            { label: "Desorbitada", value: 3 },
-            { label: "Descomissionada", value: 2 },
+            { label: "Status", value: undefined },
+            { label: "Active", value: 1 },
+            { label: "De-Orbited", value: 3 },
+            { label: "Decommissioned", value: 2 },
           ],
         },
       },
@@ -43,14 +43,14 @@ export const useSpaceStationsFilter = () => {
         field: {
           type: "select",
           options: [
-            { label: "Selecione o tipo", value: undefined },
-            { label: "Comercial", value: 2 },
-            { label: "Governo", value: 1 },
+            { label: "Type", value: undefined },
+            { label: "Comercial", value: 1 },
+            { label: "Government", value: 2 },
           ],
         },
       },
     ],
-    [onChangeStatus, onChangeType]
+    [onChangeStatus, onChangeType],
   );
 
   return {

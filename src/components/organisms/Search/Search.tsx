@@ -22,7 +22,7 @@ export const Search = memo(() => {
         onChange={handleChange}
         type="text"
         id="search"
-        placeholder="Buscar..."
+        placeholder="Search for..."
         className="outline-none flex-grow bg-transparent px-2"
       />
       <svg

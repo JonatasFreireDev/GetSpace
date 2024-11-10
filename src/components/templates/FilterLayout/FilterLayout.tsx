@@ -12,12 +12,10 @@ export const FilterLayout = ({
       <section className="px-5">
         <Filter definitions={definitions} />
       </section>
-      <section className="px-5">
+      <section className="grid gap-y-5 px-5">
         <Title text={title} />
         <Search />
-        <div className="grid my-5  gap-8 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
-          {children}
-        </div>
+        {children}
       </section>
     </div>
   );
