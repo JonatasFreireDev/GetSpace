@@ -4,7 +4,8 @@ import { SpaceStation } from "@/services/getSpaceStations/getSpaceStations.types
 import { useCallback, useEffect } from "react";
 import { SpaceStationsCard } from "./components/SpaceStationsCard/SpaceStationsCard";
 import { useSpaceStationsFilter } from "./hooks/useSpaceStationsFilter/useSpaceStationsFilter";
-import { Loading, NotFound } from "@/components/atoms";
+import { LoadingAndEmptyWrapper } from "@/components/molecules";
+import { SpaceStationsCardSkeleton } from "./components/SpaceStationsCard/SpaceStationsCard.Skeleton";
 
 export const SpaceStations = () => {
   const { data, refetch, isLoading } = useGetSpaceStations();
@@ -29,21 +30,20 @@ export const SpaceStations = () => {
     filterFunc,
   );
 
-  const render = () => {
-    if (isLoading) return <Loading />;
-    if (mapedData?.length === 0 || !mapedData) return <NotFound />;
-    if (mapedData)
-      return (
-        <div className="my-5 grid gap-8 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
-          {mapedData.map((spaceStation) => (
-            <SpaceStationsCard
-              spaceStation={spaceStation}
-              key={spaceStation.id}
-            />
-          ))}
-        </div>
-      );
-  };
-
-  return render();
+  return (
+    <LoadingAndEmptyWrapper
+      isData={mapedData}
+      isLoading={isLoading}
+      LoadingSkeleton={<SpaceStationsCardSkeleton />}
+    >
+      <div className="my-5 grid gap-8 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+        {mapedData?.map((spaceStation) => (
+          <SpaceStationsCard
+            spaceStation={spaceStation}
+            key={spaceStation.id}
+          />
+        ))}
+      </div>
+    </LoadingAndEmptyWrapper>
+  );
 };
