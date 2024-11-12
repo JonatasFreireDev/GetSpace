@@ -1,6 +1,6 @@
+import { memo } from "react";
 import { Select, Title } from "@/components/atoms";
 import { FilterProps } from "./Filter.types";
-import { memo } from "react";
 
 export const Filter = memo(
   ({ definitions }: FilterProps) => {
@@ -10,7 +10,7 @@ export const Filter = memo(
         {definitions.map((definition) => (
           <div
             key={definition.name}
-            className="flex flex-row justify-between my-2 items-center"
+            className="my-2 flex flex-row items-center justify-between"
           >
             <label htmlFor={definition.name}>{definition.label}:</label>
             {definition.field.type === "select" ? (
@@ -31,5 +31,5 @@ export const Filter = memo(
       </>
     );
   },
-  () => true
+  () => true,
 );

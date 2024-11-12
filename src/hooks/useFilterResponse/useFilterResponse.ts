@@ -3,25 +3,25 @@ import { useEffect, useMemo, useState } from "react";
 
 export const useFilterResponse = <T>(
   data: T[] | undefined,
-  filterFunc: (s: string) => T[] | undefined
+  filterFunc: (s: string) => T[] | undefined,
 ) => {
-  const [filteredStations, setFilteredStations] = useState<T[]>();
+  const [filtredData, setfiltredData] = useState<T[]>();
   const { searchData } = useSearchStore();
 
   const mapedData = useMemo(
-    () => (!searchData ? data : filteredStations),
-    [searchData, filteredStations, data]
+    () => (!searchData ? data : filtredData),
+    [searchData, filtredData, data],
   );
 
   useEffect(() => {
     if (!searchData || searchData.trim() === "") {
-      setFilteredStations([]);
+      setfiltredData([]);
       return;
     }
 
     const filteredResults = filterFunc(searchData.toLowerCase());
 
-    setFilteredStations(filteredResults);
+    setfiltredData(filteredResults);
   }, [searchData, data, filterFunc]);
 
   return { mapedData };
