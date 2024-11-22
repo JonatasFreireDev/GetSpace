@@ -1,15 +1,15 @@
-import { memo, useCallback } from "react";
+import { useCallback } from "react";
 import { useSearchStore } from "./store";
 import { debounceFunction } from "@/utils/functions";
 
-export const Search = memo(() => {
+export const Search = () => {
   const { setSearch } = useSearchStore();
 
   const handleSearchChange = useCallback(
     debounceFunction((value: string) => {
       setSearch(value);
     }, 500),
-    []
+    [],
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,16 +17,16 @@ export const Search = memo(() => {
   };
 
   return (
-    <div className="flex items-center border border-gray-300 rounded-md p-2 text-white">
+    <div className="flex items-center rounded-md border border-gray-300 p-2 text-white">
       <input
         onChange={handleChange}
         type="text"
         id="search"
         placeholder="Search for..."
-        className="outline-none flex-grow bg-transparent px-2"
+        className="flex-grow bg-transparent px-2 outline-none"
       />
       <svg
-        className="w-5 h-5"
+        className="h-5 w-5"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -41,4 +41,4 @@ export const Search = memo(() => {
       </svg>
     </div>
   );
-});
+};

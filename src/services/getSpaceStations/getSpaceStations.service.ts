@@ -1,21 +1,9 @@
-import { SpaceStationsFilterState } from "@/store/spaceStationsFilter/spaceStationsFilter.types";
 import { SpacesDevsApi } from "../_instances";
 
-export const spaceStationsService = async ({
-  status,
-  type,
-}: SpaceStationsFilterState) => {
-  const searchParams = new URLSearchParams();
-
-  searchParams.append("format", "json");
-  searchParams.append("limit", "9");
-
-  if (status) searchParams.append("status", status.toString());
-  if (type) searchParams.append("type", type.toString());
-
+export const spaceStationsService = async (searchParams: String) => {
   try {
     const response = await SpacesDevsApi.get(
-      "/2.3.0/space_stations/?" + searchParams.toString()
+      "/2.3.0/space_stations/?" + searchParams,
     );
 
     return response.data;
