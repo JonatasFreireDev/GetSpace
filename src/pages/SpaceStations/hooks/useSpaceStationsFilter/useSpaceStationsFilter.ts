@@ -1,23 +1,15 @@
 import { FilterDefinitions } from "@/components/molecules/Filter/Filter.types";
-import { useSpaceStationsFilterStore } from "@/store";
+import { useSpaceStationsStore } from "@/store";
 import { useCallback, useMemo } from "react";
 
 export const useSpaceStationsFilter = () => {
-  const { setStatus, setType, spaceStationFilterData } =
-    useSpaceStationsFilterStore();
+  const { setFilter, filterData } = useSpaceStationsStore();
 
-  const onChangeStatus = useCallback(
+  const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setStatus({ value: Number(e.target.value) });
+      setFilter({ [e.target.name]: Number(e.target.value) });
     },
-    [setStatus],
-  );
-
-  const onChangeType = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setType({ value: Number(e.target.value) });
-    },
-    [setType],
+    [setFilter],
   );
 
   const definitions: FilterDefinitions[] = useMemo(
@@ -25,7 +17,7 @@ export const useSpaceStationsFilter = () => {
       {
         name: "status",
         label: "Status",
-        handleChange: (e) => onChangeStatus(e),
+        handleChange: handleChange,
         field: {
           type: "select",
           options: [
@@ -39,7 +31,7 @@ export const useSpaceStationsFilter = () => {
       {
         name: "type",
         label: "Type",
-        handleChange: (e) => onChangeType(e),
+        handleChange: handleChange,
         field: {
           type: "select",
           options: [
@@ -50,11 +42,11 @@ export const useSpaceStationsFilter = () => {
         },
       },
     ],
-    [onChangeStatus, onChangeType],
+    [handleChange],
   );
 
   return {
     definitions,
-    spaceStationFilterData,
+    filterData,
   };
 };

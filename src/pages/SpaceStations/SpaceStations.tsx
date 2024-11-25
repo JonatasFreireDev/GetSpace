@@ -1,19 +1,23 @@
+import { useCallback, useEffect } from "react";
 import { useFilterResponse } from "@/hooks/useFilterResponse/useFilterResponse";
 import { useGetSpaceStations } from "@/services";
 import { SpaceStation } from "@/services/getSpaceStations/getSpaceStations.types";
-import { useCallback, useEffect } from "react";
 import { SpaceStationsCard } from "./components/SpaceStationsCard/SpaceStationsCard";
-import { useSpaceStationsFilter } from "./hooks/useSpaceStationsFilter/useSpaceStationsFilter";
 import { LoadingAndEmptyWrapper } from "@/components/molecules";
 import { SpaceStationsCardSkeleton } from "./components/SpaceStationsCard/SpaceStationsCard.Skeleton";
+import { useSpaceStationsStore } from "@/store";
+import { Pagination } from "./components/Pagination/Pagination";
 
 export const SpaceStations = () => {
   const { data, refetch, isLoading } = useGetSpaceStations();
-  const { spaceStationFilterData } = useSpaceStationsFilter();
+  const {
+    filterData,
+    paginationData: { offset },
+  } = useSpaceStationsStore();
 
   useEffect(() => {
     refetch();
-  }, [spaceStationFilterData, refetch]);
+  }, [filterData, offset, refetch]);
 
   const filterFunc = useCallback(
     (search: string) =>
@@ -30,12 +34,18 @@ export const SpaceStations = () => {
     filterFunc,
   );
 
+  const PaginationWrapper = useCallback(
+    () => <Pagination totalCount={data?.count} />,
+    [data?.count],
+  );
+
   return (
     <LoadingAndEmptyWrapper
       isData={mapedData}
       isLoading={isLoading}
       LoadingSkeleton={<SpaceStationsCardSkeleton />}
     >
+      <PaginationWrapper />
       <div className="my-5 grid gap-8 sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         {mapedData?.map((spaceStation) => (
           <SpaceStationsCard
@@ -44,6 +54,7 @@ export const SpaceStations = () => {
           />
         ))}
       </div>
+      <PaginationWrapper />
     </LoadingAndEmptyWrapper>
   );
 };
