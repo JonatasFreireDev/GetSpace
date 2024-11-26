@@ -6,11 +6,31 @@ function Modal() {
 
   if (modals.length === 0) return null;
 
+  // Mapeamento de tamanhos para cada tipo de modal
+  const sizeClasses = {
+    default: {
+      sm: "w-1/3 h-auto",
+      md: "w-1/2 h-auto",
+      lg: "w-2/3 h-auto",
+    },
+    side: {
+      sm: "w-1/3",
+      md: "w-1/2",
+      lg: "w-2/3",
+    },
+    bottom: {
+      sm: "h-1/3",
+      md: "h-2/5",
+      lg: "h-1/2",
+    },
+  };
+
   return ReactDOM.createPortal(
     <div className="fixed inset-0 z-50 flex bg-black bg-opacity-70">
       {modals.map((modal) => {
         let containerClasses = "";
-        let contentClasses = "relative";
+
+        const sizeClass = sizeClasses[modal.type]?.[modal.size || "md"];
 
         // Definir classes de contêiner e conteúdo com base no tipo
         switch (modal.type) {
@@ -19,24 +39,22 @@ function Modal() {
               modal.position === "right"
                 ? "right-0 rounded-l-lg"
                 : "left-0 rounded-r-lg"
-            } w-1/3`;
+            } ${sizeClass}`;
             break;
 
           case "bottom":
-            containerClasses = `grid grid-rows-[auto_1fr_auto] fixed bottom-0 left-0 w-full h-1/3 flex rounded-t-xl`;
+            containerClasses = `grid grid-rows-[auto_1fr_auto] fixed bottom-0 left-0 w-full  rounded-t-xl ${sizeClass}`;
             break;
 
           default:
-            containerClasses =
-              "fixed inset-0 flex w-2/3 items-center justify-center flex-col justify-self-center self-center rounded-xl w-96";
-            contentClasses += " w-full"; // Bordas arredondadas para modais padrão
+            containerClasses = `fixed inset-0 flex items-center justify-center flex-col justify-self-center self-center rounded-xl shadow-xl ${sizeClass}`;
             break;
         }
 
         return (
           <div
             key={modal.id}
-            className={`gap-5 bg-gray-200 shadow-black drop-shadow-2xl ${containerClasses} p-5`}
+            className={`gap-5 bg-gray-200 ${containerClasses} p-5`}
           >
             {/* Header */}
             {modal.header ? (
@@ -45,8 +63,8 @@ function Modal() {
                 closeModal,
               })
             ) : (
-              <div className={`${contentClasses}`}>
-                <h3>title</h3>
+              <div className={`relative w-full`}>
+                <h3>Title</h3>
                 <button
                   onClick={() => closeModal(modal.id)}
                   className="absolute right-0 top-0 text-gray-500 hover:text-gray-700"
