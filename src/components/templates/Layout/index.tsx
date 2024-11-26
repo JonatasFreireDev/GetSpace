@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import backgroundImage from "@/assets/background.webp";
 import { Menu } from "@/components/molecules";
+import Modal from "@/components/organisms/Modal/Modal";
 
 export const Layout = () => {
   const memoImage = useMemo(() => `url(${backgroundImage})`, []);
@@ -16,6 +17,7 @@ export const Layout = () => {
         <Menu />
       </div>
       <Outlet />
+      <Modal />
     </div>
   );
 };
