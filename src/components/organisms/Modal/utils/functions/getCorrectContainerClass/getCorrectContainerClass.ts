@@ -2,9 +2,9 @@ import { getCorrectContainerClassProps } from "./getCorrectContainerClass.types"
 
 const sizeClasses = {
   default: {
-    sm: "w-1/3 h-auto",
-    md: "w-1/2 h-auto",
-    lg: "w-2/3 h-auto",
+    sm: "w-1/3",
+    md: "w-1/2",
+    lg: "w-2/3",
   },
   side: {
     sm: "w-1/3",
@@ -35,11 +35,11 @@ export function getCorrectContainerClass({
       break;
 
     case "bottom":
-      containerClasses = `grid grid-rows-[auto_1fr_auto] fixed bottom-0 left-0 w-full  rounded-t-xl ${sizeClass}`;
+      containerClasses = `grid grid-rows-[auto_1fr_auto] fixed bottom-0 left-0 w-full rounded-t-xl ${sizeClass}`;
       break;
 
     default:
-      containerClasses = `fixed inset-0 flex items-center justify-center flex-col justify-self-center self-center rounded-xl shadow-xl ${sizeClass}`;
+      containerClasses = `grid grid-rows-[auto_1fr_auto] rounded-xl max-h-[80%] ${sizeClass}`;
       break;
   }
 
