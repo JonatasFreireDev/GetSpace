@@ -25,16 +25,16 @@ function Modal() {
         });
 
         return (
-          <motion.li
+          <motion.div
             key={modal.id}
-            className="fixed inset-0 z-50 flex bg-black bg-opacity-70"
+            className={`fixed inset-0 z-50 flex bg-black bg-opacity-70 ${modal.type === "default" ? "items-center justify-center" : ""}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
             <motion.div
-              className={`gap-5 bg-gray-200 ${containerClasses} p-5`}
+              className={`gap-5 bg-gray-200 p-5 ${containerClasses}`}
               {...animationProps}
             >
               {/* Header */}
@@ -56,7 +56,7 @@ function Modal() {
               )}
 
               {/* Content */}
-              <div>{modal.content}</div>
+              <div className="overflow-auto">{modal.content}</div>
 
               {/* Footer */}
               {modal.footer
@@ -89,7 +89,7 @@ function Modal() {
                     </div>
                   )}
             </motion.div>
-          </motion.li>
+          </motion.div>
         );
       })}
     </AnimatePresence>,
