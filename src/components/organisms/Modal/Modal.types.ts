@@ -11,10 +11,14 @@ interface ModalBase {
     onOk?: () => void;
     onCancel?: () => void;
   }) => React.ReactNode;
-  type: "default" | "side" | "bottom";
-  size?: "sm" | "md" | "lg";
+  type: ModalType;
+  size?: ModalSize;
   isDialog?: boolean;
 }
+
+export type ModalType = "default" | "side" | "bottom";
+export type ModalSize = "sm" | "md" | "lg";
+export type Position = "left" | "right";
 
 type DefaultModal = ModalBase & {
   type: "default";
@@ -22,7 +26,7 @@ type DefaultModal = ModalBase & {
 
 type SideModal = ModalBase & {
   type: "side";
-  position: "left" | "right";
+  position: Position;
 };
 
 type BottomModal = ModalBase & {

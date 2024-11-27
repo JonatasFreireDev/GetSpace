@@ -11,7 +11,7 @@ export const Layout = () => {
   return (
     <div className="h-full w-full bg-background text-text-primary">
       <div
-        className="h-[400px] bg-cover bg-center"
+        className="mb-5 h-[400px] bg-cover bg-center"
         style={{ backgroundImage: memoImage }}
       >
         <Menu />
